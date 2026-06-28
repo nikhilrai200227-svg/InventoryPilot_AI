@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: inventorypilot-api
+    env: docker
+    dockerfilePath: Dockerfile.api
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false  # set manually in Render dashboard
+      - key: DATABASE_URL
+        value: sqlite:///data/inventory.db
