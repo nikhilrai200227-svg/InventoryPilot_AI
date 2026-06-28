@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.database import Base, engine
+from src.models.product import Product
 from config.settings import settings
 
 from app.api.v1 import forecast, inventory, explain, reports, assistant
@@ -13,7 +14,6 @@ from app.api.v1 import forecast, inventory, explain, reports, assistant
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
     from src.database import SessionLocal
-    from src.models.product import Product
     db = SessionLocal()
     if db.query(Product).count() == 0:
         from scripts.seed_data import seed
