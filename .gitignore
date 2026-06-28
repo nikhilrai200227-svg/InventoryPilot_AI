@@ -8,6 +8,7 @@ data/processed/*
 !data/processed/.gitkeep
 .venv/
 venv/
-.streamlit/
+.streamlit/secrets.toml
+.streamlit/*.local
 *.egg-info/
 dist/
